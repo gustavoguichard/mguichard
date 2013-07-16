@@ -23,13 +23,12 @@ html
       #main.small-12.large-8.large-offset-2.columns
         h1#logo
           a href="/" MGuichard
-        .row.partners_container
-          h4 Fábricas que representamos
-          - @partners.each do |partner|
-            a href="#{partner[:url]}" target="_blank"
-              img src="#{partner[:img]}" title="#{partner[:name]}" width="210" height="140"
         .row.collapse.contact_form
           h4 Entre em contato
+          p
+            | Por estes telefones ou pelo formulário de contato mais abaixo:
+            br/
+            | (51) 3222 0755 - (51) 3222 0739 - (51) 9981 1551
           form action="/contact" method="post"
             .small-3.large-2.columns
               span.prefix Nome:
@@ -51,3 +50,9 @@ html
               -if @errors && @errors.include?(:body)
                 small.error= @errors[:body]
             input type="submit" value="Enviar" class="button radius"
+        .row.partners_container
+          h4 Fábricas que representamos
+          - @partners.each do |partner|
+            a href="#{partner[:url]}" target="_blank"
+              img src="#{partner[:img]}" title="#{partner[:name]}" width="210" height="140"
+          hr/
