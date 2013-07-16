@@ -1,0 +1,60 @@
+@import compass/css3/filter
+
+// FILTERS
+= blur($value: 4px)
+  +filter(blur($value))
+
+= brightness($value: 0.35)
+  +filter(brightness($value))
+
+= contrast($value: 140%)
+  +filter(contrast($value))
+
+= grayscale($value: 100%)
+  +filter(grayscale($value))
+
+= saturate($value: 4)
+  +filter(saturate($value))
+
+= invert($value: 100%)
+  +filter(invert($value))
+
+= hue-rotate($value: 180deg)
+  +filter(hue-rotate($value))
+
+// ANIMATION
+= keyframes($animation-name)
+  @-webkit-keyframes #{$animation-name}
+    @content
+  @-moz-keyframes #{$animation-name}
+    @content
+  @-o-keyframes #{$animation-name}
+    @content
+  @keyframes #{$animation-name}
+    @content
+
+// Use it to set the color, background and text-shadow of selected areas of page
+= selection($no-shadow: true)
+  ::selection
+    @if $no-shadow
+      text-shadow: none
+    @content
+  ::-moz-selection
+    @if $no-shadow
+      text-shadow: none
+    @content
+
+// Set a color for the inputs placeholders. Compass doesn't have it =P
+= placeholder-color($color)
+  &::-webkit-input-placeholder
+    color: $color
+  &:-moz-placeholder
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+  &:input-placeholder
+    color: $color
+
+= rgba($property, $color, $alpha: 1)
+  #{$property}: $color
+  #{$property}: rgba($color, $alpha)

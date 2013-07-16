@@ -1,0 +1,63 @@
+@import compass/utilities/sprites
+@import compass/css3/images
+@import compass/typography/text/replacement
+
+// IMAGE MIXINS
+// Before using this mixin you should put the images in a folder called sprites
+// and then import'em like so: @import "sprites/*.png"
+= sprite-replace($name, $boilerplate: false)
+  +sprites-sprite($name)
+  @if $boilerplate
+    +boilerplate-image-replace
+  @else
+    +hide-text
+  display: block
+  width: sprites-sprite-width($name)
+  height: sprites-sprite-height($name)
+
+= image-replace($img)
+  +hide-text
+  +image-block($img)
+
+= image-block($img)
+  display: block
+  background-repeat: no-repeat
+  height: image-height($img)
+  width: image-width($img)
+  background-image: image-url($img)
+
+= prepend-image($img, $absolute: true)
+  +decorative-content(before, $absolute)
+    +image-block($img)
+    @content
+
+= append-image($img, $absolute: true)
+  +decorative-content(after, $absolute)
+    +image-block($img)
+    @content
+
+= inline-icon($img, $gap:5px, $pos: left, $padding: 0)
+  background-image: image-url($img)
+  background-repeat: no-repeat
+  @if $pos == right
+    background-position: right center
+    text-align: right
+  @else
+    background-position: left center
+    text-align: left
+  line-height: image-height($img)
+  padding: $padding
+  padding-#{$pos}: image-width($img) + $gap
+
+// COLOR MIXINS
+= vertical-gradient($color1, $color2, $legacy: true)
+  @if $legacy
+    background-color: mix($color1, $color2)
+    +filter-gradient($color1, $color2, vertical)
+  +background-image(linear-gradient(top, $color1, $color2))
+
+= horizontal-gradient($color1, $color2, $legacy: true)
+  @if $legacy
+    background-color: mix($color1, $color2)
+    +filter-gradient($color1, $color2, horizontal)
+  +background-image(linear-gradient(left, $color1, $color2))

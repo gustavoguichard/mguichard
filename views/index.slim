@@ -1,6 +1,53 @@
-h1 MGuichard
-form action="/contact" method="post"
-  input type="text" name="name"
-  input type="email" name="mail"
-  textarea name="body"
-  input type="submit" value="Enviar"
+doctype 5
+html
+  head
+    /meta http-equiv="X-UA-Compatible" content="IE=Edge"
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta http-equiv="x-ua-compatible" content="ie=edge"
+    title MGuichard - Representações comerciais
+
+    / meta name="classification" content="Rent a Local Friend and live the local spirit of different cities"
+    / meta name="description" content="Explore locals' favourite spots behind the touristic scene with a Local Friend"
+    / meta name="keywords" content="private tour, tour,  passeios, guias, guides, small group, grupo pequeno, local, rio de janeiro, são paulo, new york, nova iorque, lisboa, barcelona, paris, bogotá, mexico city, berlin, london, recife"
+    meta name="robots" content="index, follow"
+    meta name="googlebot" content="index, follow, all"
+    meta name="doc-class" content="Completed"
+    meta name="doc-rights" content="Public"
+
+    link[rel="shortcut icon" href="/favicon.ico"]
+    link[rel="stylesheet" href="/style.css"]
+
+  body
+    .row
+      #main.small-12.large-8.large-offset-2.columns
+        h1#logo
+          a href="/" MGuichard
+        .row.partners_container
+          h4 Fábricas que representamos
+          - @partners.each do |partner|
+            a href="#{partner[:url]}" target="_blank"
+              img src="#{partner[:img]}" title="#{partner[:name]}" width="210" height="140"
+        .row.collapse.contact_form
+          h4 Entre em contato
+          form action="/contact" method="post"
+            .small-3.large-2.columns
+              span.prefix Nome:
+            .small-9.large-10.columns
+              input type="text" name="name" required="required" placeholder="Seu nome aqui..." value="#{params[:name]}" class="#{"error" if @errors && @errors.include?(:name)}"
+              -if @errors && @errors.include?(:name)
+                small.error= @errors[:name]
+            .small-3.large-2.columns
+              span.prefix Email:
+            .small-9.large-10.columns
+              input type="email" name="mail" required="required" placeholder="ex: email@email.com" value="#{params[:mail]}" class="#{"error" if @errors && @errors.include?(:mail)}"
+              -if @errors && @errors.include?(:mail)
+                small.error= @errors[:mail]
+            .small-3.large-2.columns
+              span.prefix Mensagem:
+            .small-9.large-10.columns
+              textarea name="body" required="required" placeholder="Responderemos em breve :)" class="#{"error" if @errors && @errors.include?(:body)}"
+                 = params[:body]
+              -if @errors && @errors.include?(:body)
+                small.error= @errors[:body]
+            input type="submit" value="Enviar" class="button radius"

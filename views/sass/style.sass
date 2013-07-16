@@ -1,0 +1,59 @@
+// Make sure the charset is set appropriately
+// @charset UTF-8
+@import normalize
+@import compass
+@import compass/css3
+
+// This includes all of the foundation global elements that are needed to work with any of the other files.
+@import foundation/variables
+@import foundation/components/global
+@import foundation/components/grid
+@import foundation/components/visibility
+@import foundation/components/type
+@import foundation/components/buttons
+@import foundation/components/forms
+
+@import semantic-mixins/main
+@import semantic-mixins/image
+@import semantic-mixins/css3-support
+
+html
+  background: url('images/bg.jpg') no-repeat top center
+
+body
+  background: none
+  text-align: center
+
+#main
+  background: #e6e6e6
+  box-shadow: 0 4px 10px rgba(black, .4)
+
+#logo a
+  +image-replace("logo.png")
+  margin: 1em auto
+
+.button
+  box-shadow: none
+  &:hover
+    +vertical-gradient(lighten($primary-color, 4%), darken($primary-color, 4%))
+    box-shadow: 0 1px 3px rgba(black, .4)
+    text-shadow: 0 -1px 1px rgba(black, .4)
+  &:active
+    background: $primary-color
+    box-shadow: 0 2px 3px rgba(black, .3) inset
+    text-shadow: 0 1px 1px rgba(black, .4)
+
+h4
+  color: #444
+
+.partners_container
+  padding-bottom: 2em
+  img
+    width: 180px
+    margin: .5em
+    +saturate(0)
+    +opacity(.6)
+    +transition(.3s)
+    &:hover
+      +saturate(1)
+      +opacity(1)
