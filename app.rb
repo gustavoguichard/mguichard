@@ -59,6 +59,7 @@ def set_partners
       {name: "Isdralit", img: "images/fabricas/isdralit.jpg", url: "http://www.isdralit.com.br/"},
       {name: "Dacar", img: "images/fabricas/dacar.jpg", url: "http://www.dacar.ind.br/"},
       {name: "Pisoforte", img: "images/fabricas/pisoforte.jpg", url: "http://www.pisoforte.com.br/"},
+      {name: "Van Gogh", img: "images/fabricas/vangogh.jpg", url: "http://www.vangoghrevestimentos.com.br/"},
       {name: "Fortkoll", img: "images/fabricas/fortkoll.jpg", url: "https://www.facebook.com/pages/Fortkoll-Argamassas-e-Rejuntes/322253637877947"}
     ]
 end
