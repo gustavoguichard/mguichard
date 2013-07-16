@@ -20,36 +20,28 @@ html
 
   body
     .row
-      #main.small-12.large-8.large-offset-2.columns
-        h1#logo
-          a href="/" MGuichard
-        .row.collapse.contact_form
-          h4 Entre em contato
-          p
-            | Por estes telefones ou pelo formulário de contato mais abaixo:
-            br/
-            | (51) 3222 0755 - (51) 3222 0739 - (51) 9981 1551
-          form action="/contact" method="post"
-            .small-3.large-2.columns
-              span.prefix Nome:
-            .small-9.large-10.columns
-              input type="text" name="name" required="required" placeholder="Seu nome aqui..." value="#{params[:name]}" class="#{"error" if @errors && @errors.include?(:name)}"
-              -if @errors && @errors.include?(:name)
-                small.error= @errors[:name]
-            .small-3.large-2.columns
-              span.prefix Email:
-            .small-9.large-10.columns
-              input type="email" name="mail" required="required" placeholder="ex: email@email.com" value="#{params[:mail]}" class="#{"error" if @errors && @errors.include?(:mail)}"
-              -if @errors && @errors.include?(:mail)
-                small.error= @errors[:mail]
-            .small-3.large-2.columns
-              span.prefix Mensagem:
-            .small-9.large-10.columns
-              textarea name="body" required="required" placeholder="Responderemos em breve :)" class="#{"error" if @errors && @errors.include?(:body)}"
-                 = params[:body]
-              -if @errors && @errors.include?(:body)
-                small.error= @errors[:body]
-            input type="submit" value="Enviar" class="button radius"
+      #main.small-12.large-10.large-offset-1.columns
+        .row
+          .logo_area.large-6.small-12.columns
+            h1#logo
+              a href="/" MGuichard
+          .logo_area.large-6.small-12.columns
+            .row.collapse.contact_form
+              h4 Entre em contato
+              p
+                | (51) 3222 0755 - (51) 3222 0739 - (51) 9981 1551
+              form action="/contact" method="post"
+                input type="text" name="name" required="required" placeholder="Seu nome aqui..." value="#{params[:name]}" class="#{"error" if @errors && @errors.include?(:name)}"
+                -if @errors && @errors.include?(:name)
+                  small.error= @errors[:name]
+                input type="email" name="mail" required="required" placeholder="ex: email@email.com" value="#{params[:mail]}" class="#{"error" if @errors && @errors.include?(:mail)}"
+                -if @errors && @errors.include?(:mail)
+                  small.error= @errors[:mail]
+                textarea name="body" required="required" placeholder="Responderemos em breve :)" class="#{"error" if @errors && @errors.include?(:body)}"
+                   = params[:body]
+                -if @errors && @errors.include?(:body)
+                  small.error= @errors[:body]
+                input type="submit" value="Enviar" class="button radius"
         .row.partners_container
           h4 Fábricas que representamos
           - @partners.each do |partner|

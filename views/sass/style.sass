@@ -18,7 +18,8 @@
 @import semantic-mixins/css3-support
 
 html
-  background: url('images/bg.jpg') no-repeat top center
+  @media screen and (min-width: 768px)
+    background: url('images/bg.jpg') no-repeat top center
 
 body
   background: none
@@ -49,8 +50,16 @@ h4
 ul.phones
   list-style: none
 
+.contact_form
+  background: white
+  border: 1px solid #ddd
+  padding: 1.8em .6em 0
+  border-radius: 0 0 6px 6px
+  form
+    margin-bottom: 0
+
 .partners_container
-  padding-bottom: 2em
+  padding: 2em 0 2em
   img
     width: 180px
     margin: .5em
